@@ -1,0 +1,20 @@
+<%= content_for :title do %>
+    <title>Admin Login</title>
+<% end %>
+
+<%= content_for :body do %>
+    <% if flash[:notice] %>
+        <div class="alert alert-danger" role="alert"> <%= flash[:notice] %> </div>
+    <% end %>
+
+    <%= form_tag session_index_path do %>
+    <div class="form-group">
+        <label for="new_list_name">E-mail:</label>
+        <input type="text" class="form-control" id="new_list_name" name="email" placeholder="example@example.com">
+        <br>
+        <label for="new_list_name1">Password:</label>
+        <input type="password" class="form-control" id="new_list_name1" name="password" placeholder="123456">
+        <br>
+        <button type="submit" class="btn btn-warning btn-sm ">Log In as Admin</button>
+    <% end %>
+<% end %>

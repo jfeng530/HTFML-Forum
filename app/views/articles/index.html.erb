@@ -1,0 +1,28 @@
+<%= content_for :title do %>
+  <title>Articles</title>
+  <% end %>
+
+  <%= content_for :body do %>
+  <% if @t %>
+  <br>
+  <br>
+  <br>
+      <h1> Sorry, we don't have any articles at this category for now... </h1>
+  <% elsif @s %>
+  <br>
+  <br>
+  <br>
+     <h1> Sorry, we couldn't find anything with this search... Try another words! </h1>    
+  <% end %>
+
+      <% @articles.each do |art| %>
+        <h3><%= art.title %></h3>
+        <h5><%= Category.find(art.category_id).name%></h5>
+        <h6><%= art.created_at.strftime("%-d %b %Y") %></h6>
+        <br>
+        <p class="border"><%= art.content %></p>
+        <%= link_to 'Show This Article', "/categories/#{Category.find(art.category_id).to_param}/articles/#{art.to_param}" %>
+        <br>
+        <br>
+      <% end %>
+  <% end %>

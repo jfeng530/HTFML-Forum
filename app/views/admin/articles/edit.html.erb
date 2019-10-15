@@ -1,0 +1,36 @@
+<%= content_for :title do %>
+    <title><%= @article.title %></title>
+<% end %>
+
+<%= content_for :body do %>
+<h3>Edit - <%= @article.title %>:</h3>
+<h6>Published At - <%= @article.created_at.strftime("%b, %-d %Y, %H:%M") %> </h6>
+<p>Last Changes - <%= @article.updated_at.strftime("%b, %-d %Y, %H:%M") %> </p>
+<br>
+    <%= form_for @article, url: admin_article_path do %>
+     <div class="form-group">
+            <label for="title">Change Article Title:</label>
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="muted_desc" placeholder="New Title...">
+            <small id="muted_desc" class="form-text text-muted">You can change whenever you want...</small>
+        </div>
+        <div class="form-group">
+                <select class="custom-select" name="category_id">
+                        <option selected> Current Category - <%= Category.find(@article.category_id).name %> - </option>
+                        <option value="1" >Politics</option>
+                        <option value="2" >Economy</option>
+                        <option value="3" >Food</option>
+                        <option value="4" >Magazine</option>
+                </select>
+                <!-- <div class="invalid-feedback">Example invalid custom select feedback</div> -->
+        </div>
+        <br>
+       <div class="form-group">
+            <label for="content">Article Content:</label>
+            <input id="x" type="hidden" name="content" class="form-control">
+            <trix-editor input="x"><%= @article.content %></trix-editor>
+        </div>  
+
+        <button type="submit" class="btn btn-warning btn-sm">Submit Your Edits!</button>
+    <% end %>
+
+<% end %>

@@ -1,0 +1,27 @@
+<%= content_for :title do %>
+    <title>Articles</title>
+    <% end %>
+  
+    <%= content_for :body do %>
+    <% if @s %>
+    <br>
+    <br>
+    <br>
+       <h2> Sorry, we couldn't find anything for that search... Try another words! </h2>    
+    <% end %>
+  
+        <% @articles.each do |art| %>
+          <h3><%= art.title %></h3>
+          <h5><%= Category.find(art.category_id).name%></h5>
+          <h6><%= art.created_at.strftime("%b, %-d %Y, %H:%M") %></h6>
+          <p class="border"><%= art.content %></p>
+
+          <%= link_to 'Show This Article', admin_article_path(art) %> <br>
+          <%= link_to 'Edit This Article', edit_admin_article_path(art) %> <br>
+          <%= link_to 'Delete This Article', admin_article_path(art), method: :delete %>
+          <br>
+          <br>
+          <br>
+        <% end %>
+        <br>            
+    <% end %>

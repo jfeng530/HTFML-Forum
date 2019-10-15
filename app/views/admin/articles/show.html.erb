@@ -1,0 +1,16 @@
+<%= content_for :title do %>
+    <title>@article.title</title>
+    <% end %>
+    
+    <%= content_for :body do %>
+          <h3><%= @article.title %></h3>
+          <h5><%= Category.find(@article.category_id).name%></h5>
+          <h6><%= @article.created_at.strftime("%b, %-d %Y, %H:%M") %></h6>
+          
+          <p><%= @article.content %></p>
+          <%= link_to 'Back To List', admin_articles_path %><br>
+          <%= link_to 'Edit This Article', edit_admin_article_path(@article) %> <br>
+          <%= link_to 'Delete This Article', admin_article_path(@article), method: :delete %>
+          <br>
+          <br>
+    <% end %>

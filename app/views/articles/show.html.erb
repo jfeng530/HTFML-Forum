@@ -1,0 +1,14 @@
+<%= content_for :title do %>
+    <title>@article.title</title>
+    <% end %>
+    
+    <%= content_for :body do %>
+          <h3><%= @article.title %></h3>
+          <h5><%= Category.find(@article.category_id).name%></h5>
+          <h6><%= @article.created_at.strftime("%-d %b %Y") %></h6>
+          <br>
+          <p><%= @article.content %></p>
+          <%= link_to 'Back', "/categories/#{Category.find(@article.category_id).to_param}/articles" %>
+          <br>
+          <br>
+    <% end %>
