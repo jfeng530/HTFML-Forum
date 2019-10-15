@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   
       if params[:query]
         #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
-        @articles = Article.all.select{|art| art.title.downcase.include?(params[:query].downcase) || art.content.include?(params[:query].downcase)}
+        @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
         if @articles == []
           @s = true
         else

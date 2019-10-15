@@ -3,12 +3,13 @@ class Admin::ArticlesController < ApplicationController
   before_action :authorize
 
   layout 'admin'
+  layout 'base', :only => [:new]
   # GET /articles
   # GET /articles.json
   def index
     if params[:query]
       #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
-      @articles = Article.all.select{|art| art.title.downcase.include?(params[:query].downcase) || art.content.include?(params[:query].downcase)}
+      @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
     else 
       @articles = Article.all
     end

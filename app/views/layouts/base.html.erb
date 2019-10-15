@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <!-- <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="shortcut icon" href="favicon.png" type="image/png">
   <link rel="icon" href="favicon.png" type="image/png">
   <meta name="msapplication-TileColor" content="#ffffff">
@@ -35,11 +39,6 @@
             <a class="nav-link" href="/categories/4-magazine/articles">
                <img class="float-up" src="/images/micon.png" width="25" height="25"> Magazine </a>
           </ul>
-
-          <form class="form-inline" style = "position:relative; left:600px; top:2px;">
-            <input class="form-control mr-sm-2 btn-outline-warning" type="search" placeholder="Search Articles..." aria-label="Search" name="search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-          </form>
           
       </nav>
 
