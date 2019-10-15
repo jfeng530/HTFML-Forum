@@ -20,7 +20,7 @@
         <h5><%= Category.find(art.category_id).name%></h5>
         <h6><%= art.created_at.strftime("%-d %b %Y") %></h6>
         <br>
-        <p class="border"><%= art.content %></p>
+        <p class="border border-warning"><%= art.content %></p>
         <%= link_to 'Show This Article', "/categories/#{Category.find(art.category_id).to_param}/articles/#{art.to_param}" %>
         <br>
         <br>

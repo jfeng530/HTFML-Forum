@@ -1,13 +1,15 @@
 <%= content_for :title do %>
-    <title>@article.title</title>
+    <title><%= @article.title %></title>
     <% end %>
     
     <%= content_for :body do %>
-          <h3><%= @article.title %></h3>
-          <h5><%= Category.find(@article.category_id).name%></h5>
-          <h6><%= @article.created_at.strftime("%b, %-d %Y, %H:%M") %></h6>
-          
-          <p><%= @article.content %></p>
+          <div>
+          <h3 class="d-flex justify-content-center"><%= @article.title %></h3>
+          <h7 style="text-align:left;float:left;"><%= Category.find(@article.category_id).name%></h7>
+          <h7 style="text-align:right;float:right;"><%= @article.created_at.strftime("%-d %b %Y") %></h7>
+          </div>    
+          <br>
+          <p class="border border-warning"><%= @article.content %></p>
           <%= link_to 'Back To List', admin_articles_path %><br>
           <%= link_to 'Edit This Article', edit_admin_article_path(@article) %> <br>
           <%= link_to 'Delete This Article', admin_article_path(@article), method: :delete %>
