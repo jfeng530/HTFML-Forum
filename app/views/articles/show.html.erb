@@ -12,7 +12,31 @@
           </div>    
           <br>
           <p class="border border-warning"><%= @article.content %></p>
+
+          <br>
+          <h4>Comments</h4>
+            <ul>
+          <% @article.comments.each do |comment| %>
+            <li class="list-group-item"> <%= comment.text %> </li>
+          <% end %>
+            </ul>
+          <br>
+
+          <h5>Add Comment</h5>
+          <%= form_for @comment, url: create_comment_path, class: "form-group" do |f| %>
+          <%= f.text_field :text, class: "form-control" %> <br>
+          <%= f.submit 'Send', class: "btn-sm btn-outline-warning float-right" %>
+          <% end %>
+
+          <br>
           <%= link_to 'Back', "/categories/#{Category.find(@article.category_id).to_param}/articles" %>
           <br>
-          <br>
     <% end %>
+
+
+
+
+    <!-- <form class="form-inline" style = "position:relative; left:600px; top:2px;">
+            <input class="form-control mr-sm-2 btn-outline-warning" type="search" placeholder="Search Articles..." aria-label="Search" name="search">
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+    </form> -->

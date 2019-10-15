@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/login', to: "session#new"
 
   # if needed for comment # 
+  post '/categories/:id/articles/:id', to: "comments#create", as: 'create_comment'
+  #
 
   namespace :admin do 
     resources :articles
