@@ -10,6 +10,30 @@
           </div>    
           <br>
           <p class="border border-warning"><%= @article.content %></p>
+          <br>
+
+          <h4>Comments</h4>
+            <% if flash[:notice] == "Comment Added!" %>
+                <div class="alert alert-success" role="alert"> <%= flash[:notice] %> </div>
+              <% elsif  flash[:notice] == "Comment Couldn't Added Try Again..." %>
+                <div class="alert alert-danger" role="alert"> <%= flash[:notice] %> </div>
+            <% end %>
+            <ul class="list-group">
+              <% @article.comments.each do |comment| %>
+              <div>
+            <li class="list-group-item d-flex justify-content-between align-items-center"> 
+             <%= comment.text %>
+
+             <!-- <form method="delete" action=<%="#{@article.id}/comments/#{comment.id}"%> >
+                  <button type="submit" class="badge">Go</button>
+            </form>    -->
+
+            </div>
+            </li>
+          <% end %>
+            </ul>
+          <br>
+
           <%= link_to 'Back To List', admin_articles_path %><br>
           <%= link_to 'Edit This Article', edit_admin_article_path(@article) %> <br>
           <%= link_to 'Delete This Article', admin_article_path(@article), method: :delete %>

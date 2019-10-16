@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     def index
       @category = Category.find(params[:category_id])
   
-      if params[:query]
+      if params[:search]
         #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
         @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
         if @articles == []

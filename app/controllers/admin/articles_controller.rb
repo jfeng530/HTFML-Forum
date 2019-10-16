@@ -2,12 +2,13 @@ class Admin::ArticlesController < ApplicationController
   # before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authorize
 
-  layout 'admin'
   layout 'base', :only => [:new]
+  layout 'admin'
+
   # GET /articles
   # GET /articles.json
   def index
-    if params[:query]
+    if params[:search]
       #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
       @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
     else 
