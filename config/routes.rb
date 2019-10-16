@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # if needed for comment # 
   post '/categories/:id/articles/:id', to: "comments#create", as: 'create_comment'
-  delete '/admin/articles/:id/comments/:id', to: "comments#destroy", as: 'destroy_comment'
+  delete '/articles/:id/comments/:id', to: "comments#destroy", as: 'delete_comment'
   #
 
   namespace :admin do 

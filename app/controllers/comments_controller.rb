@@ -13,7 +13,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        byebug
+        # byebug
+        Comment.delete(params[:id])
+        redirect_to admin_article_path(Article.find(params[:article_id]))
     end
 
 end
