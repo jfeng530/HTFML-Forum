@@ -26,7 +26,24 @@ class ArticlesController < ApplicationController
     end
 
     def show
+      @related_articles1 = []
+      @article = Article.find(params[:id])
       @comment = Comment.new
+      @article_title_words = @article.title.downcase.split(' ') 
+      
+      @related_articles = Article.all.select{|art| (art.title.downcase.split(' ') & @article_title_words).any? }
+      @related_articles.delete_if{ |ra| ra == @article}
+      # byebug
+      if @related_articles.count > 3
+        3.times do
+          x = rand(0...@related_articles.size)
+          @related_articles1 << @related_articles[x]
+          @related_articles[x].delete
+        end
+      else
+        @related_articles1 = @related_articles.uniq
+      end
+      # byebug
     end
   
     private

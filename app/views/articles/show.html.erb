@@ -14,6 +14,19 @@
           <p class="border border-warning"><%= @article.content %></p>
 
           <br>
+
+          <h4>Related Articles</h4>
+          <ul class="list-group list-group-horizontal-md ">
+           
+            <% @related_articles1.each do |ra| %>
+              <li class="list-group-item col-4" style="text-align:center;">
+                  <div class="text-truncate">
+                  <%= link_to ra.title, category_article_path(ra.category.to_param, ra), target: "blank_" %>
+                  </div>
+              </li>
+            <% end %>
+           </ul>
+           <br>
           <h4>Comments</h4>
             <% if flash[:notice] == "Comment Added!" %>
                 <div class="alert alert-success" role="alert"> <%= flash[:notice] %> </div>
