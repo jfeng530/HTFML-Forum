@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
         # byebug
         @article = Article.find(params[:id])
         if Comment.create(text: params[:comment][:text], article_id: @article.id).valid?
-            Comment.create(text: params[:comment][:text], article_id: @article.id)
             flash[:notice] = "Comment Added!"
             redirect_to category_article_path(@article)
         else
