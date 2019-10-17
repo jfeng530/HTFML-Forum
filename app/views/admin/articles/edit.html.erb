@@ -3,6 +3,11 @@
 <% end %>
 
 <%= content_for :body do %>
+
+<% if flash[:fail] %>
+    <div class="alert alert-danger" role="alert"> <%= flash[:fail] %> </div>
+<% end %>
+
 <h3>Edit - <%= @article.title %>:</h3>
 <h6>Published At - <%= @article.created_at.strftime("%b, %-d %Y, %H:%M") %> </h6>
 <p>Last Changes - <%= @article.updated_at.strftime("%b, %-d %Y, %H:%M") %> </p>
@@ -10,12 +15,12 @@
     <%= form_for @article, url: admin_article_path do |f| %>
      <div class="form-group">
             <label for="title">Change Article Title:</label>
-            <input type="text" class="form-control" id="title" name="title" aria-describedby="muted_desc" placeholder="New Title...">
+            <input type="text" class="form-control" value="<%= @article.title %>" id="title" name="title" aria-describedby="muted_desc" placeholder="New Title...">
             <small id="muted_desc" class="form-text text-muted">You can change whenever you want...</small>
         </div>
         <div class="form-group">
                 <select class="custom-select" name="category_id">
-                        <option selected> Current Category - <%= Category.find(@article.category_id).name %> - </option>
+                        <option selected value="1"> Current Category - <%= Category.find(@article.category_id).name %> - </option>
                         <option value="1" >Politics</option>
                         <option value="2" >Economy</option>
                         <option value="3" >Food</option>
@@ -28,7 +33,7 @@
             <label for="content">Article Content:</label>
             <input id="x" type="hidden" name="content" class="form-control">
             <trix-editor input="x"> <%= @article.content %></trix-editor>
-        </div>  
+        </div>
 
         <button type="submit" class="btn btn-warning btn-sm">Submit Your Edits!</button>
     <% end %>

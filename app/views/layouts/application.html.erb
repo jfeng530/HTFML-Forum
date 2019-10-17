@@ -5,7 +5,7 @@
   <%= csp_meta_tag %>
   <!-- <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  
+
   <link rel="shortcut icon" href="favicon.png" type="image/png">
   <link rel="icon" href="favicon.png" type="image/png">
   <meta name="msapplication-TileColor" content="#ffffff">
@@ -28,15 +28,15 @@
           <ul class="navbar-nav ">
             <a class="nav-link" href="/categories/1-politics/articles">
                <img class="d-inline-block align-top" src="/images/picon.png" width="25" height="25"> Politics </a>
-          
-         
+
+
             <a class="nav-link" href="/categories/2-economy/articles">
                <img class="float-up" src="/images/eicon.png" width="25" height="25"> Economy </a>
-       
-      
+
+
             <a class="nav-link" href="/categories/3-food/articles">
                <img class="float-up" src="/images/foodicon.png" width="25" height="25"> Food </a>
-       
+
             <a class="nav-link" href="/categories/4-magazine/articles">
                <img class="float-up" src="/images/micon.png" width="25" height="25"> Magazine </a>
           </ul>
@@ -45,7 +45,7 @@
             <input class="form-control mr-sm-2 btn-outline-warning" type="search" placeholder="Search Articles..." aria-label="Search" name="search">
             <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
           </form>
-          
+
       </nav>
 
 
@@ -57,7 +57,7 @@
         </li>
         <%= form_tag session_path(session), method: :delete, style: "position:relative; left: 1000px; top:2px;" do %>
             <li class="nav-item">
-                <button type="submit" class="btn btn-warning btn-sm ">Log Out</button>      
+                <button type="submit" class="btn btn-warning btn-sm ">Log Out</button>
             </li>
         <% end %>
       <% else %>
@@ -67,11 +67,11 @@
       <%end %>
       </ul>
       </nav>
-  
+
       <div class="container  pt-5">
           <%= yield :body %>
       </div>
-      
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

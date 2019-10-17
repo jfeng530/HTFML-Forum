@@ -11,7 +11,7 @@ class Admin::ArticlesController < ApplicationController
     if params[:search]
       #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
       @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
-    else 
+    else
       @articles = Article.all
     end
 
@@ -23,6 +23,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    # byebug
     @article = Article.find(params[:id])
   end
 
@@ -42,17 +43,15 @@ class Admin::ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if !params[:title].empty?
-      @article.update(title: params[:title])
+    # byebug
+    if @article.update!(article_params)
+        flash[:success] = "Edits Has Been Saved!"
+        # @article.update(article_params)
+        redirect_to admin_article_path(@article)
+    else
+        flash[:fail] = "Edits Has Not Been Saved! Make Sure You Didn't Leave Blank Section!"
+        redirect_to edit_admin_article_path(@article)
     end
-    if !params[:content].empty?
-      @article.update(content: params[:content])
-    end
-    if params[:category_id]
-      @article.update(category_id: params[:category_id])
-    end
-    
-    redirect_to "/admin/articles/#{params[:id]}"
   end
 
   def destroy
@@ -71,6 +70,11 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.fetch(:article, {})
+      params[:article] = {}
+      params[:article][:title] = params[:title]
+      params[:article][:content] = params[:content]
+      params[:article][:category_id] = params[:category_id]
+      params.require(:article).permit(:title, :content, :category_id)
     end
+
 end

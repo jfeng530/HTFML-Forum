@@ -1,15 +1,20 @@
 <%= content_for :title do %>
     <title><%= @article.title %></title>
     <% end %>
-    
+
     <%= content_for :body do %>
+          <% if flash[:success] %>
+              <div class="alert alert-success" role="alert"> <%= flash[:success] %> </div>
+          <% end %>
           <div>
           <h3 class="d-flex justify-content-center"><%= @article.title %></h3>
           <h7 style="text-align:left;float:left;"><%= Category.find(@article.category_id).name%></h7>
           <h7 style="text-align:right;float:right;"><%= @article.created_at.strftime("%-d %b %Y") %></h7>
-          </div>    
+          </div>
           <br>
+          <div>
           <p class="border border-warning"><%= @article.content %></p>
+          </div>
           <br>
 
           <h4>Comments</h4>
@@ -21,11 +26,11 @@
             <ul class="list-group">
               <% @article.comments.each do |comment| %>
               <div>
-            <li class="list-group-item d-flex justify-content-between align-items-center"> 
+            <li class="list-group-item d-flex justify-content-between align-items-center">
              <%= comment.text %>
 
              <%= form_tag delete_comment_path(@article, comment), method: :delete do %>
-              <button type="submit" value=<%= "#{@article.to_param}"%> name="article_id" class="badge badge-danger">X</button>      
+              <button type="submit" value=<%= "#{@article.to_param}"%> name="article_id" class="badge badge-danger">X</button>
              <% end %>
 
             </div>

@@ -1,23 +1,22 @@
 <%= content_for :title do %>
     <title><%= @article.title %></title>
     <% end %>
-    
+
     <%= content_for :body do %>
-          
-          
           <div>
           <h3 class="d-flex justify-content-center"><%= @article.title %></h3>
           <h7 style="text-align:left;float:left;"><%= Category.find(@article.category_id).name%></h7>
           <h7 style="text-align:right;float:right;"><%= @article.created_at.strftime("%-d %b %Y") %></h7>
-          </div>    
+          </div>
           <br>
           <p class="border border-warning"><%= @article.content %></p>
 
           <br>
+          <% if @related_articles1 != [] %>
 
           <h4>Related Articles</h4>
           <ul class="list-group list-group-horizontal-md ">
-           
+
             <% @related_articles1.each do |ra| %>
               <li class="list-group-item col-4" style="text-align:center;">
                   <div class="text-truncate">
@@ -26,17 +25,22 @@
               </li>
             <% end %>
            </ul>
+           <% else %>
+            <div>
+              <h5 align="center" class="text-dark" > We couldn't find any related articles... </h5>
+            </div>
+           <% end %>
            <br>
           <h4>Comments</h4>
             <% if flash[:notice] == "Comment Added!" %>
                 <div class="alert alert-success" role="alert"> <%= flash[:notice] %> </div>
-              <% elsif  flash[:notice] == "Comment Couldn't Added Try Again..." %>
+              <% elsif  flash[:notice] == "Comment Should Not Be Blank! Please Try Again..." %>
                 <div class="alert alert-danger" role="alert"> <%= flash[:notice] %> </div>
             <% end %>
             <ul class="list-group">
               <% @article.comments.each do |comment| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center"> 
-             <%= comment.text %> 
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+             <%= comment.text %>
              <span class="badge badge-warning badge-pill"> <%= @article.created_at.strftime("%b %-d %Y, %H:%M") %> </span>
             </li>
           <% end %>
