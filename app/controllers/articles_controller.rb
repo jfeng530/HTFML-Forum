@@ -1,20 +1,20 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+    # respond_to :html, :js, only: [:show]
 
     layout "show_lo", :only => [:show]
     # GET /articles
     # GET /articles.json
     def index
       @category = Category.find(params[:category_id])
-
+      # byebug
       if params[:search]
         #MAKE SEARCH WITH SQL COMMAND ## W H E R E ##
         @articles = Article.all.select{|art| art.title.downcase.include?(params[:search].downcase)}
         if @articles == []
           @s = true
         else
-
+          @articles == []
         end
       else
         @articles = Article.all.select{|art| art.category_id.to_i == @category.id}
@@ -44,6 +44,10 @@ class ArticlesController < ApplicationController
         end
       else
         @related_articles1 = @related_articles.uniq
+                respond_to do |format|
+            format.html
+            format.json
+          end
       end
       # byebug
     end

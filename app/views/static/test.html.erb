@@ -1,0 +1,70 @@
+<%= content_for :title do %>
+<style>
+body {
+font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+width: 130px;
+position: fixed;
+z-index: 1;
+top: 20px;
+left: 10px;
+background: #eee;
+overflow-x: hidden;
+padding: 8px 0;
+}
+
+.sidenav a {
+padding: 6px 8px 6px 16px;
+text-decoration: none;
+font-size: 25px;
+color: #2196F3;
+display: block;
+}
+
+.sidenav a:hover {
+color: #064579;
+}
+
+.main {
+margin-left: 140px; /* Same width as the sidebar + left position in px */
+font-size: 28px; /* Increased text to enable scrolling */
+padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+</style>
+<% end %>
+
+<%= content_for :body do %>
+
+  <h5 class="d-flex justify-content-center"> Istanbul Sosyal Bilimler Lisesi (ISBL) </h5>
+<div class="card container">
+
+  <div class="sidenav d-none d-lg-block" style="padding-top: 50px;padding-left">
+    <h6><a href="#about">About</a></h6>
+    <h6><a href="#services">Services</a></h6>
+    <h6><a href="#clients">Clients</a></h6>
+    <h6><a href="#contact">Contact</a></h6>
+  </div>
+
+
+  <% @articles.each do |art| %>
+  <div class="card-body">
+    <h6><%= art.title %></h6>
+    <h7><%= Category.find(art.category_id).name%></h7>
+    <p><%= art.created_at.strftime("%-d %b %Y") %></p>
+    <br>
+    <p><%= art.content %></p>
+  </div>
+    <%= link_to 'Show This Article', "/categories/#{Category.find(art.category_id).to_param}/articles/#{art.to_param}" %>
+    <br>
+    <br>
+  <% end %>
+</div>
+
+<% end %>

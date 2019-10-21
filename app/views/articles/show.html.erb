@@ -31,37 +31,30 @@
             </div>
            <% end %>
            <br>
-          <h4>Comments</h4>
-            <% if flash[:notice] == "Comment Added!" %>
-                <div class="alert alert-success" role="alert"> <%= flash[:notice] %> </div>
-              <% elsif  flash[:notice] == "Comment Should Not Be Blank! Please Try Again..." %>
-                <div class="alert alert-danger" role="alert"> <%= flash[:notice] %> </div>
-            <% end %>
-            <ul class="list-group">
-              <% @article.comments.each do |comment| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-             <%= comment.text %>
-             <span class="badge badge-warning badge-pill"> <%= comment.created_at.strftime("%b %-d %Y, %H:%M") %> </span>
-            </li>
-          <% end %>
-            </ul>
+           <div>
+            <h4>Comments</h4>
+              <ul class="list-group">
+                <% @article.comments.each do |comment| %>
+                <div id="asd">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                   <%= comment.text %>
+                   <span class="badge badge-warning badge-pill"> <%= comment.created_at.strftime("%b %-d %Y, %H:%M") %> </span>
+                  </li>
+                </div>
+              <% end %>
+              </ul>
+          </div>
           <br>
+            <h5>Add Comment</h5>
+          <div id="comment-notice" >
+              <!-- AJAX FLASH NOTICE! => CHECK app/views/comments/create.js.erb -->
+          </div>
+              <%= form_with model: @comment, url: create_comment_path, class: "create_comment", remote: true do |f| %>
+              <%= f.text_field :text, class: "form-control", id: "comment-text" %> <br>
+              <%= f.submit 'Send', class: "btn-sm btn-outline-warning float-right" %><br><br>
 
-          <h5>Add Comment</h5>
-          <%= form_for @comment, url: create_comment_path, class: "form-group" do |f| %>
-          <%= f.text_field :text, class: "form-control" %> <br>
-          <%= f.submit 'Send', class: "btn-sm btn-outline-warning float-right" %>
-          <% end %>
-
+              <% end %>
           <br>
           <%= link_to 'Back', "/categories/#{Category.find(@article.category_id).to_param}/articles" %>
           <br>
     <% end %>
-
-
-
-
-    <!-- <form class="form-inline" style = "position:relative; left:600px; top:2px;">
-            <input class="form-control mr-sm-2 btn-outline-warning" type="search" placeholder="Search Articles..." aria-label="Search" name="search">
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-    </form> -->

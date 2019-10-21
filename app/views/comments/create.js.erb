@@ -1,0 +1,32 @@
+flashMessage = "<%= escape_javascript flash[:notice] %>"
+if( <%= escape_javascript @comment.valid? %> ){
+  comment = "<%= escape_javascript @comment.text %>"
+  date = "<%= escape_javascript @comment&.created_at&.strftime("%b %-d %Y, %H:%M") %>"
+
+    $(".list-group").last().append(`
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+       ${comment}
+       <span class="badge badge-warning badge-pill"> ${date} </span>
+      </li>
+      `)
+      $("#comment-notice").append(`
+        <div class="alert alert-success" role="alert"><small> ${flashMessage} </small></div>
+        `)} else {
+        $("#comment-notice").append(`
+          <div class="alert alert-danger" role="alert"><small> ${flashMessage} </small></div>
+          `)}
+        $(".alert").fadeOut(3000).promise().done(function() {
+        $(this).remove();
+    });
+        $("#comment-text").val("");
+
+
+
+          // STRFTIME Problem => Giving Undefined Method!!!!!!!!!!!!!!!!!!!
+
+
+          // <% if flash[:notice] == "Comment Added!" %>
+          //       <div class="alert alert-success" role="alert"> <%= flash[:notice] %> </div>
+          //     <% elsif  flash[:notice] == "Comment Should Not Be Blank! Please Try Again..." %>
+          //       <div class="alert alert-danger" role="alert"> <%= flash[:notice] %> </div>
+          //   <% end %>
