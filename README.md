@@ -1,4 +1,5 @@
 <p align="center"><img width=40% src="https://i.imgur.com/Do9anPh.jpg?1"></p>
+
 <p>
   <img align="center" src="https://img.shields.io/badge/PostgreSQL-12.1-336791">
   <img align="center" src="https://img.shields.io/badge/Ruby-2.6.1-CC342D">
