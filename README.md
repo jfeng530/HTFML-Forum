@@ -22,7 +22,7 @@
 
 # Overview
   ### Description
-  HTFML is a web forum designed to allow users to host discussions about various topics. Leave comments and replies to continue the discussion and like your favorite posts.
+  HTFML is a web forum designed to allow users to host discussions about various topics. Create an account and write posts about your favorite topics. Like, comment and leave replies on your favorite posts.
   
   ### Features
   - View, search and sort posts by categories
@@ -32,9 +32,13 @@
   - Change user account information
   
   ### Challenges
-  - Web application to render specific components based on logged-in session/user
-    - Used conditional rendering based on session to rend
-    
+  - Rendering specific components based on presence of active session
+    - Incorporated conditional rendering, using if/else statements, to account for active session 
+  - Creating replies to associate to its respective comment
+    - Created self-referential relationship between different instances of the `Comment` class as a `Reply`
+  - Sorting posts based on categories
+    - Through search params passed to the `Post` controller, filtered through all posts with the matching category and returning results
+  
   ### Technologies and Frameworks
   - [jQuery](https://jquery.com/)
   - [Bootstrap](https://getbootstrap.com/)
@@ -42,6 +46,7 @@
   - [Ruby on Rails](https://rubyonrails.org/)
   - [PostgreSQL](https://www.postgresql.org/)
   - [Active Model Serializer](https://github.com/rails-api/active_model_serializers)
+  - [bcrypt](https://github.com/codahale/bcrypt-ruby)
 
 &nbsp;
  
