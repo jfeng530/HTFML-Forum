@@ -22,12 +22,12 @@
 
 # Overview
   ### Description
-  HTFML is a web forum designed to allow users to host discussions about various topics. Create an account and write posts about your favorite topics. Like, comment and leave replies on your favorite posts.
+  HTFML is a web forum designed to allow users to host discussions about various topics. Create an account and write posts about your favorite topics. Like, comment, and leave replies on your favorite posts.
   
   ### Features
-  - View, search and sort posts by categories
+  - View, search, and sort posts by categories
   - Create an account with log-in/log-out functionality 
-  - Leave comments, replies and like your favorite posts
+  - Leave comments, replies, and like your favorite posts
   - View your activity on the user profile page
   - Change user account information
   
@@ -52,7 +52,7 @@
  
 # Installation
   ### Prerequisites
-  HTFML is built on Ruby, Ruby on Rails & PostgreSQL. Make sure you have the latest versions of all four components installed before cloning this repo. You can find their official installation guides below:
+  HTFML is built on Ruby, Ruby on Rails, and PostgreSQL. Make sure you have the latest versions of all four components installed before cloning this repo. You can find their official installation guides below:
   
   - [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
   - [Ruby On Rails](https://guides.rubyonrails.org/v5.0/getting_started.html)
