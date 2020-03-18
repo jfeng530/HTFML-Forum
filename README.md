@@ -58,7 +58,6 @@
   - [Ruby On Rails](https://guides.rubyonrails.org/v5.0/getting_started.html)
   - [PostgreSQL](https://www.postgresqltutorial.com/)
   
-  ### Instructions
 ### Instructions
   - Clone the most recent branch in this repository
   > Make sure you are in the project path before running the commands
